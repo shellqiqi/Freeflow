@@ -71,17 +71,22 @@
 #define CREDSLEN    CMSG_LEN(sizeof(struct CREDSTRUCT))
 #define CONTROLLEN  (RIGHTSLEN + CREDSLEN)
 
+/* 对地址p大小size字的缓存失效，污损回写内存 */
 void mem_flush(const void *p, int allocation_size);
+
+/* 硬编码的主机表，主机数量固定 */
 const char HOST_LIST[HOST_NUM][16] = {
     "192.168.2.13",
     "192.168.2.15"
 };
 
+/* MR共享内存 */
 struct MR_SHM {
-    char* mr_ptr;
-    char* shm_ptr;
+    char* mr_ptr;   /* MR指针 */
+    char* shm_ptr;  /* 共享内存指针 */
 };
 
+/* 句柄参数 */
 struct HandlerArgs {
     struct FreeFlowRouter *ffr;
     int client_sock;

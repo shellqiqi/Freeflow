@@ -3,6 +3,7 @@
 
 #include "shared_memory.h"
 
+/* 以名称与大小定义的对象，包含没有初始化的文件描述符与内存指针 */
 ShmPiece::ShmPiece(const char* name, int size)
 {
 	this->name = name;
@@ -17,6 +18,9 @@ ShmPiece::~ShmPiece()
 	this->remove();
 }
 
+/**
+ * 打开创建共享内存文件并分配size大小空间，指针指向该空间
+ */
 bool ShmPiece::open()
 {
 	/* open shared memory segment */
